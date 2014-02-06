@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/users_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/name_please"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/users_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/user_address"
+        android:inputType="textPostalAddress" />
+
+    <EditText
+        android:id="@+id/contact_numbers_sms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/number_list_sms"
+        android:inputType="phone" />
+
+        <EditText
+        android:id="@+id/contact_numbers_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/number_list_call"
+        android:inputType="phone" />
+        
+    <EditText
+        android:id="@+id/contact_emails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/emails_list"
+        android:inputType="textEmailAddress" />
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"      
+        android:textColorHighlight="#E32636"
+        android:text="@string/start" />
+
+    <TextView
+        android:id="@+id/priority_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/priority_order"
+        android:textSize="20" />
+
+</LinearLayout>
