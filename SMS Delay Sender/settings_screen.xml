@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<!--     <EditText -->
+<!--         android:id="@+id/abort_password" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignParentLeft="true" -->
+<!--         android:layout_alignParentTop="true" -->
+<!--         android:ems="10" -->
+<!--         android:hint="@string/password" -->
+<!--         android:inputType="textPassword" > -->
+
+<!--         <requestFocus /> -->
+<!--     </EditText> -->
+
+    <EditText
+        android:id="@+id/abort_password_repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/abort_password"
+        android:ems="10"
+        android:hint="@string/repeat_password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/abort_password_repeat"
+        android:layout_below="@+id/abort_password_repeat"
+        android:text="@string/reset" />
+
+    <EditText
+        android:id="@+id/abort_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:hint="@string/password"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <SeekBar
+        android:id="@+id/seekBar_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="62dp" />
+
+    <SeekBar
+        android:id="@+id/seekBar_sms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekBar_call"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="75dp" />
+
+    <TextView
+        android:id="@+id/time_infos_sms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekBar_sms"
+        android:layout_alignParentLeft="true"
+        android:text="@string/time_sms" />
+
+    <TextView
+        android:id="@+id/time_infos_calls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekBar_call"
+        android:layout_alignParentLeft="true"
+        android:text="@string/time_call" />
+
+    <TextView
+        android:id="@+id/time_infos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/time_infos_sms"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="27dp"
+        android:text="@string/time_info" />
+
+</RelativeLayout>

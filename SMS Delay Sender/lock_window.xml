@@ -26,9 +26,8 @@
         android:text="@string/help"
         android:textColor="#000000"
         android:textColorHighlight="#E32636"
-        />
-<!--         android:textSize="15"  -->
-        
+        android:textSize="15" />
+
     <Button
         android:id="@+id/stop_alarm_button"
         android:layout_width="wrap_content"
@@ -36,7 +35,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/password_given"
         android:text="@string/stop_alarm"
-        android:textColor="#0000FF"
+        android:textColor="	#0000FF"
         android:textColorHighlight="#A4C639" />
 
     <ProgressBar

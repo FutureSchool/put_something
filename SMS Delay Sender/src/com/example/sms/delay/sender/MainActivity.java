@@ -2,12 +2,10 @@ package com.example.sms.delay.sender;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -20,35 +18,26 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		buttonSend = (Button) findViewById(R.id.buttonSend);
-		textPhoneNo = (EditText) findViewById(R.id.editTextPhoneNo);
-		textSMS = (EditText) findViewById(R.id.editTextSMS);
+		buttonSend = (Button) findViewById(R.id.help_button);
+		textPhoneNo = (EditText) findViewById(R.id.contact_numbers_sms);
+//		textSMS = (EditText) findViewById(R.id.editTextSMS);
 
-		buttonSend.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				
-				String phoneNo = textPhoneNo.getText().toString();
-				String sms = textSMS.getText().toString();
-
-				if (phoneNo == ""|| sms == ""  ){
-					return;
-				}
-				
-				try {
-					SmsManager smsManager = SmsManager.getDefault();
-					smsManager.sendTextMessage(phoneNo, null, sms, null, null);
-					Toast.makeText(getApplicationContext(), "SMS Sent!",
-							Toast.LENGTH_LONG).show();
-				} catch (Exception e) {
-					Toast.makeText(getApplicationContext(),
-							"SMS faild, please try again later!",
-							Toast.LENGTH_LONG).show();
-					e.printStackTrace();
-				}
-
-			}
-		});
+//		buttonSend.setOnClickListener(new OnClickListener() {
+//
+//			public void onClick(View v) {
+//
+////				String phoneNo = textPhoneNo.getText().toString();
+////				String sms = textSMS.getText().toString();
+//				
+//				String phoneNo = textPhoneNo.getText().toString();
+//				String sms = textSMS.getText().toString();
+//
+//				
+//				
+//				Sms s = new Sms();
+//				s.SendSMS(phoneNo,sms);
+//			}
+//		});
 
 	}
 }
