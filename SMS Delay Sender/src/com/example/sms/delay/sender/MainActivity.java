@@ -18,8 +18,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-//		buttonSend = (Button) findViewById(R.id.help_button);
-//		textPhoneNo = (EditText) findViewById(R.id.contact_numbers_sms);
+		buttonSend = (Button) findViewById(R.id.help_button);
+		textPhoneNo = (EditText) findViewById(R.id.contact_numbers_sms);
 //		textSMS = (EditText) findViewById(R.id.editTextSMS);
 
 //		buttonSend.setOnClickListener(new OnClickListener() {
