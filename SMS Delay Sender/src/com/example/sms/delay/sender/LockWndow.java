@@ -16,6 +16,6 @@ public class LockWndow extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.lock_wndow, menu);
         return true;
-        
+       
     }
 }
