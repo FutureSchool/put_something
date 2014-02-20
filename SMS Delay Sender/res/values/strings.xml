@@ -26,5 +26,6 @@
     <string name="priority_order">Please list the contact information in order. From high priority (first) to low priority (last)</string>
     <string name="numbers_list">In case of an emergency:</string>
     <string name="title_activity_lock_wndow">LockWndow</string>
+    <string name="title_activity_parameters_to_pass">ParametersToPass</string>
 
 </resources>
