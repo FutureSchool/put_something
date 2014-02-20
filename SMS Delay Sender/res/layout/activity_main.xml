@@ -33,6 +33,22 @@
         android:text="@string/numbers_list"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <EditText
+        android:id="@+id/contact_numbers_sms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/number_list_sms"
+        android:inputType="phone|number" />
+
+    <EditText
+        android:id="@+id/contact_emails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/emails_list"
+        android:inputType="textEmailAddress" />
+
         <EditText
         android:id="@+id/contact_numbers_call"
         android:layout_width="match_parent"
@@ -40,22 +56,6 @@
         android:ems="10"
         android:hint="@string/number_list_call"
         android:inputType="phone" />
-
-        <EditText
-            android:id="@+id/contact_numbers_sms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/number_list_sms"
-            android:inputType="phone|number" />
-
-        <EditText
-            android:id="@+id/contact_emails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/emails_list"
-            android:inputType="textEmailAddress" />
 
     <Button
         android:id="@+id/button_start"

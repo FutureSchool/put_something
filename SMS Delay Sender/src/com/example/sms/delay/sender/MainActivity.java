@@ -33,6 +33,19 @@ public class MainActivity extends Activity {
 //				String sms = textSMS.getText().toString();
 //
 //				
+		
+		
+		
+		
+		
+		
+		//HUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUGGGGGGGGGGGGGGGGGGGEEEEEEEEEEEE CHANGES FOR KANI
+		
+		
+		
+		
+		
+		
 //				
 //				Sms s = new Sms();
 //				s.SendSMS(phoneNo,sms);

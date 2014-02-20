@@ -7,8 +7,8 @@
     <string name="name_please">Your full name</string>
     <string name="send">SEND</string>
     <string name="user_address">Your address please</string>
-    <string name="number_list_sms">Messaged</string>
-    <string name="number_list_call">Called</string>
+    <string name="number_list_sms">Numbers to be messaged</string>
+    <string name="number_list_call">Numbers to be called</string>
     <string name="start">START SECURITY</string>
     <string name="enter_password">password here</string>
     <string name="stop_alarm">STOP THE ALARM</string>
@@ -16,7 +16,7 @@
 
     <color name="red">#E32636</color>
 
-    <string name="emails_list">Emailed</string>
+    <string name="emails_list">Numbers to be emailed</string>
     <string name="time_sms">Time till the sms and email contacts are notified (all at once)</string>
     <string name="time_call">Time till the emergency contacts are called in order of priority</string>
     <string name="repeat_password">Repeat Password</string>
@@ -24,7 +24,7 @@
     <string name="reset">RESET</string>
     <string name="time_info">Adjust the slider bars to change the time from 0 seconds upto 300 seconds</string>
     <string name="priority_order">Please list the contact information in order. From high priority (first) to low priority (last)</string>
-    <string name="numbers_list">List of numbers/emails to be:</string>
+    <string name="numbers_list">In case of an emergency:</string>
     <string name="title_activity_lock_wndow">LockWndow</string>
 
 </resources>
