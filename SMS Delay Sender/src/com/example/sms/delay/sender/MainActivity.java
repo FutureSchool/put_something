@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
 		buttonSend = (Button) findViewById(R.id.help_button);
 		textPhoneNo = (EditText) findViewById(R.id.contact_numbers_sms);
 		
-		
+
 		
 		ParametersToPass par= new ParametersToPass();
 
