@@ -40,6 +40,8 @@ public class LockWndow extends Activity {
 		help.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				dispatchSms(phoneNo, createSms(address, name));
+//				have to set permission for Internet
+//				sendEmail();
 			}
 		});
 		stop.setOnClickListener(new OnClickListener() {
