@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-       
-    android:orientation="vertical"
-    android:padding="10dip"
+    android:id="@+id/popup_element"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    >
-
-    <TextView
-        android:layout_width="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dip" >
+   
+    <EditText
+        android:id="@+id/password_given"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dip"
-        android:text="Test Pop-Up"
-    />
+        android:ems="10"
+        android:hint="@string/enter_password"
+        android:inputType="textPassword" >
+
+</EditText>
+
+    <Button
+        android:id="@+id/stop_alarm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:text="@string/stop_alarm"
+        android:textColor="#0000FF"
+        android:textColorHighlight="#A4C639" />
 
 </LinearLayout>

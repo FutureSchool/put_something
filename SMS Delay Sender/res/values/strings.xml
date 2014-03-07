@@ -10,8 +10,8 @@
     <string name="number_list_sms">Numbers to be messaged</string>
     <string name="number_list_call">Numbers to be called</string>
     <string name="start">START SECURITY</string>
-    <string name="enter_password">password here</string>
-    <string name="stop_alarm">STOP THE ALARM</string>
+    <string name="enter_password">Password</string>
+    <string name="stop_alarm">STOP THE BLOODY ALARM</string>
     <string name="help">HELP</string>
 
     <color name="red">#E32636</color>
