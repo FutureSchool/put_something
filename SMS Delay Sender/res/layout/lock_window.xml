@@ -1,78 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:gravity="center_horizontal"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/password_given"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:hint="@string/enter_password"
-        android:inputType="textPassword" >
+        <!-- android:layout_alignParentLeft="true" -->
+        <!-- android:layout_alignParentTop="true" -->
 
-        <requestFocus />
-    </EditText>
+<!--         <requestFocus /> -->
+    <!-- android:layout_alignParentRight="true" -->
+    <!-- android:layout_below="@+id/password_given" -->
+    <!-- android:textSize="15" -->
 
-    <Button
-        android:id="@+id/help_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/password_given"
-        android:text="@string/help"
-        android:textColor="#000000"
-        android:textColorHighlight="#E32636"
-        />
-<!--         android:textSize="15"  -->
-        
-    <Button
-        android:id="@+id/stop_alarm_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/password_given"
-        android:text="@string/stop_alarm"
-        android:textColor="#0000FF"
-        android:textColorHighlight="#A4C639" />
+    <!-- android:layout_alignParentLeft="true" -->
+    <!-- android:layout_below="@+id/password_given" -->
 
-    <ProgressBar
-        android:id="@+id/call_progressbar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="188dp" />
+    <!-- android:layout_alignParentBottom="true" -->
+    <!-- android:layout_alignParentLeft="true" -->
+    <!-- android:layout_alignParentRight="true" -->
 
     <TextView
         android:id="@+id/call_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/call_progressbar"
-        android:layout_alignParentLeft="true"
-        android:text="@string/time_call" />
+        android:text="@string/time_call"
+        android:textColor="#ffffff"
+        android:textSize="15dp" />
+
+    <!-- android:layout_above="@+id/call_progressbar" -->
+    <!-- android:layout_alignParentLeft="true" -->
+
+    <!-- android:layout_above="@+id/call_time" -->
+    <!-- android:layout_alignParentLeft="true" -->
+    <!-- android:layout_alignParentRight="true" -->
 
     <ProgressBar
-        android:id="@+id/sms_progress_bar"
+        android:id="@+id/call_progressbar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/call_time"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="28dp" />
+        android:layout_marginBottom="188dp"
+        android:background="#ffffff" />
 
     <TextView
         android:id="@+id/sms_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/sms_progress_bar"
-        android:layout_alignParentLeft="true"
-        android:text="@string/time_sms" />
+        android:text="@string/time_sms"
+        android:textColor="#ffffff"
+        android:textSize="15dp" />
 
-</RelativeLayout>
+    <ProgressBar
+        android:id="@+id/sms_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:background="#ffffff" />
+
+    <!-- android:layout_above="@+id/sms_progress_bar" -->
+    <!-- android:layout_alignParentLeft="true" -->
+
+<!--     <EditText -->
+<!--         android:id="@+id/password_given" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:ems="10" -->
+<!--         android:hint="@string/enter_password" -->
+<!--         android:inputType="textPassword" -->
+<!--         android:visibility="invisible" /> -->
+
+    <Button
+        android:id="@+id/help_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red"
+        android:text="@string/help"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#E32636"
+        android:textSize="100dp" />
+
+</LinearLayout>
