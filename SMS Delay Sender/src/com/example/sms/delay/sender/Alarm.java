@@ -23,5 +23,6 @@ public class Alarm extends Activity{
 
 	public void stopAl() {
 		mp.stop();
+		mp.release();
 	}
 }
