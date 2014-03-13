@@ -1,6 +1,7 @@
 package com.example.sms.delay.sender;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,15 +26,18 @@ public class Alarm_handler extends Activity {
 		stop.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+				
 				if (passField == null) {
 					Toast.makeText(null, "Please enter the password.",
 							Toast.LENGTH_LONG).show();
 				} else {
 					password = passField.getText().toString();
-					String token = PasswordToken.makeDigest(password);
 					// ... GET token using the shared preferences
 
-					if (PasswordToken.validate(password, token)) {
+					String token1 = prefs.getString("password", null);
+
+					if (PasswordToken.validate(password, token1)) {
 						Alarm alarm = new Alarm();
 						alarm.panic(false);
 					} else {

@@ -1,7 +1,6 @@
 package com.example.sms.delay.sender;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -15,15 +14,14 @@ public class Settings extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.settings_screen);
 
-		SharedPreferences prefs = this.getSharedPreferences(
-				"com.example.sms.delay.sender", Context.MODE_PRIVATE);
+		SharedPreferences.Editor prefs = getPreferences(MODE_PRIVATE).edit();
 
 		pass1 = (EditText) findViewById(R.id.abort_password);
 		pass2 = (EditText) findViewById(R.id.abort_password_repeat);
 
 		if (pass1 == pass2) {
 			password = pass1.getText().toString();
-			prefs.edit().putString(getToken(), password);
+			prefs.putString("password", getToken());
 		}
 	}
 
