@@ -1,24 +1,21 @@
 package com.example.sms.delay.sender;
 
 import android.app.Activity;
+import android.content.Context;
 import android.media.MediaPlayer;
 
 public class Alarm extends Activity{
 	private MediaPlayer mp;
 
-	public void panic(Boolean alarm) {
-		if (alarm = true) {
-			alarm();
+	public void panic(Boolean alarm,Context context) {
+		if (alarm == true) {
+			int resId;
+			resId = R.raw.car_alarm;
+			mp = MediaPlayer.create(context, resId);
+			mp.start();
 		} else {
 			stopAl();
 		}
-	}
-
-	public void alarm() {
-		int resId;
-		resId = R.raw.car_alarm;
-		mp = MediaPlayer.create(this, resId);
-		mp.start();
 	}
 
 	public void stopAl() {

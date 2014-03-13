@@ -30,22 +30,22 @@ public class LockWndow extends Activity {
 
 		name = parameters.usersName;
 		address = parameters.usersAddress;
-		phoneNo = parameters.helpPhoneNumber;
+		phoneNo = parameters.helpSmsNumber;
 		recipients = parameters.helpEmailAddress;
 
 		help.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Alarm alarm = new Alarm();
-				alarm.panic(true);
-				inflateView();
+				alarm.panic(true, getApplicationContext());
 				dispatchSms(phoneNo, createSms(address, name));
-			
-				SendEmail mail = new SendEmail();
-				 mail.sendEmail(recipients,
-						 //subject
-						 "hlep",
-						 //text
-						 "me");
+				inflateView();
+
+				// SendEmail mail = new SendEmail();
+				// mail.sendEmail(recipients,
+				// //subject
+				// "hlep",
+				// //text
+				// "me");
 			}
 		});
 	}
@@ -56,7 +56,7 @@ public class LockWndow extends Activity {
 		View layout = inflater.inflate(R.layout.pop_up_pass,
 				(ViewGroup) findViewById(R.id.popup_element));
 		PopupWindow pw = new PopupWindow(layout, 100, 100, true);
-		pw.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
+		pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
 	}
 
@@ -68,7 +68,7 @@ public class LockWndow extends Activity {
 
 	public void dispatchSms(String No, String message) {
 		Sms s = new Sms();
-		s.SendSMS(No, message);
+		s.SendSMS(No, message, getApplicationContext());
 	}
 
 	@Override

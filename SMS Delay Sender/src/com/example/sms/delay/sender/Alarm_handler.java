@@ -39,7 +39,7 @@ public class Alarm_handler extends Activity {
 
 					if (PasswordToken.validate(password, token1)) {
 						Alarm alarm = new Alarm();
-						alarm.panic(false);
+						alarm.panic(false,getApplicationContext());
 					} else {
 						Toast.makeText(null,
 								"Invalid password please try again.",
