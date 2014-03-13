@@ -2,62 +2,71 @@ package com.example.sms.delay.sender;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.PopupWindow;
 
 public class LockWndow extends Activity {
-	// 1. In your screen, there's two options: Emergency alarm and Deactivate
-	// alarm.
-	// For immediate alarm, the user clicks the Emergency button. Start with
-	// that one.
-	// It's the most important part of the app and it should work flawless.
-	// You can work on it without Chandran's screen, just hard-code the five
-	// string fields:
-	// Name, Address, SMSNumber, EmailAddress, PhoneNumber. After Chandran's
-	// first step is ready,
-	// you can use "getExtras" to get the correct data.
-	// Try to use separate functions for all the steps: Create SMS text, send
-	// SMS, Create Email text,
-	// Send Email, Call phone, Sound Alarm.
 
 	Button help;
-	EditText textPhoneNo;
-	EditText address;
-	EditText name;
-	String phoneNo;
-	String sms;
+	String address, name, phoneNo, sms, recipients;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.lock_window);
 
 		help = (Button) findViewById(R.id.help_button);
-		textPhoneNo = (EditText) findViewById(R.id.contact_numbers_sms);
-		address = (EditText) findViewById(R.id.users_address);
-		name = (EditText) findViewById(R.id.users_name);
+		Bundle extras = getIntent().getExtras();
 
-		phoneNo = textPhoneNo.getText().toString();
-//		
-//		phoneNo = "1234567890";
-//		sms = "Hlep me!";
-	
+		ParametersToPass parameters = (ParametersToPass) extras
+				.getSerializable("parameters");
+
+		name = parameters.usersName;
+		address = parameters.usersAddress;
+		phoneNo = parameters.helpPhoneNumber;
+		recipients = parameters.helpEmailAddress;
+
 		help.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				dispatchSms(phoneNo,createSms(address,name));
+				Alarm alarm = new Alarm();
+				alarm.panic(true);
+				inflateView();
+				dispatchSms(phoneNo, createSms(address, name));
+			
+				SendEmail mail = new SendEmail();
+				 mail.sendEmail(recipients,
+						 //subject
+						 "hlep",
+						 //text
+						 "me");
 			}
 		});
 	}
-	
-	public String createSms(EditText address, EditText name ){
+
+	public void inflateView() {
+		LayoutInflater inflater = (LayoutInflater) this
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View layout = inflater.inflate(R.layout.pop_up_pass,
+				(ViewGroup) findViewById(R.id.popup_element));
+		PopupWindow pw = new PopupWindow(layout, 100, 100, true);
+		pw.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
+
+	}
+
+	public String createSms(String address, String name) {
 		String smsString;
-		smsString = name.getText().toString() + "\n" + address.getText().toString();
+		smsString = name + "\n" + address;
 		return smsString;
-		}
-	
-	public void dispatchSms (String No, String message){
+	}
+
+	public void dispatchSms(String No, String message) {
 		Sms s = new Sms();
 		s.SendSMS(No, message);
 	}

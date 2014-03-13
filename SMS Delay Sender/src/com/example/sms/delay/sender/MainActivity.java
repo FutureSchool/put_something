@@ -91,5 +91,6 @@ public class MainActivity extends Activity {
 					"Please enter your name and address", Toast.LENGTH_LONG);
 			toast.show();
 		}
+
 	}
 }
