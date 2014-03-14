@@ -1,5 +1,4 @@
-<resources>
-
+<resources >
     <string name="app_name">SMS Delay Sender</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
@@ -29,5 +28,6 @@
     <string name="title_activity_parameters_to_pass">ParametersToPass</string>
     <string name="set_pass">SET</string>
     <string name="setting_done">Done</string>
+    <string name="alarm_handler">alarm_handler</string>
 
 </resources>

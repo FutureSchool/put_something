@@ -14,6 +14,10 @@ public class Alarm_handler extends Activity {
 	Button stop;
 	EditText passField;
 	String password;
+	String testpass;
+	
+	private SharedPreferences.Editor prefs = getPreferences(MODE_PRIVATE)
+			.edit();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -22,7 +26,12 @@ public class Alarm_handler extends Activity {
 
 		stop = (Button) findViewById(R.id.stop_alarm_button);
 		passField = (EditText) findViewById(R.id.password_given);
-
+		
+//		test for password
+//		please remove later !!!!!!!!!
+		testpass = "hello";
+		prefs.putString("password", getToken());
+		
 		stop.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -47,5 +56,11 @@ public class Alarm_handler extends Activity {
 				}
 			}
 		});
+	}
+//	test for password delete later !!!!!
+
+	public String getToken() {
+		String token = PasswordToken.makeDigest(testpass);
+		return token;
 	}
 }

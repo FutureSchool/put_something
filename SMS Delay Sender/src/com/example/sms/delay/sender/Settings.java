@@ -44,6 +44,7 @@ public class Settings extends Activity {
 				prefs.putString("password", s);
 			}
 		});
+		stopService(getIntent());
 	}
 
 	public String getToken() {
