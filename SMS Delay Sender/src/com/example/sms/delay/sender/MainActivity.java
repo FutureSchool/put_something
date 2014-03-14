@@ -23,20 +23,24 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		//
 		// buttonSend = (Button) findViewById(R.id.help_button);
 		// textPhoneNo = (EditText) findViewById(R.id.contact_numbers_sms);
-	    SharedPreferences list = PreferenceManager.getDefaultSharedPreferences(this);
-//		SharedPreferences list = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-		
-		((EditText) findViewById(R.id.users_name)).setText(list.getString("usersName", ""));
-		((EditText) findViewById(R.id.users_name)).setText(list.getString("usersAddress", ""));
-		((EditText) findViewById(R.id.users_name)).setText(list.getString("helpPhoneNumber", ""));
-		((EditText) findViewById(R.id.users_name)).setText(list.getString("helpSmsNumber", ""));
-		((EditText) findViewById(R.id.users_name)).setText(list.getString("helpEmailAddress", ""));
-		
+		SharedPreferences list = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		// SharedPreferences list = getSharedPreferences(PREFS_NAME,
+		// MODE_PRIVATE);
 
-		
+		((EditText) findViewById(R.id.users_name)).setText(list.getString(
+				"usersName", ""));
+		((EditText) findViewById(R.id.users_name)).setText(list.getString(
+				"usersAddress", ""));
+		((EditText) findViewById(R.id.users_name)).setText(list.getString(
+				"helpPhoneNumber", ""));
+		((EditText) findViewById(R.id.users_name)).setText(list.getString(
+				"helpSmsNumber", ""));
+		((EditText) findViewById(R.id.users_name)).setText(list.getString(
+				"helpEmailAddress", ""));
+
 	}
 
 	public void startSecurity(View view) {
@@ -67,8 +71,10 @@ public class MainActivity extends Activity {
 				toast.show();
 
 			} else {
-				SharedPreferences list = PreferenceManager.getDefaultSharedPreferences(this);
-//				SharedPreferences list = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+				SharedPreferences list = PreferenceManager
+						.getDefaultSharedPreferences(this);
+				// SharedPreferences list = getSharedPreferences(PREFS_NAME,
+				// MODE_PRIVATE);
 				SharedPreferences.Editor editor = list.edit();
 				editor.putString("usersName", par.usersName);
 				editor.putString("usersAddress", par.usersAddress);
@@ -78,7 +84,6 @@ public class MainActivity extends Activity {
 
 				// Commit the edits!
 				editor.commit();
-
 
 				Intent activity_2 = new Intent(this, LockWndow.class);
 				// activity_2.putExtra(activityPath, R.id.start_path);
@@ -93,5 +98,16 @@ public class MainActivity extends Activity {
 			toast.show();
 		}
 
+	}
+	
+	public Boolean check_settings(){
+		String password;
+		SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+		password = prefs.getString("password", null);
+		if (password == null){
+			Intent setting = new Intent(this,Settings.class);
+			startActivityForResult(setting, RESULT_OK);
+		}
+		return true;
 	}
 }

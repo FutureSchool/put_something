@@ -3,6 +3,7 @@ package com.example.sms.delay.sender;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -50,12 +51,16 @@ public class LockWndow extends Activity {
 		});
 	}
 
+	@SuppressWarnings("deprecation")
 	public void inflateView() {
+		int width;
+		Display display = getWindowManager().getDefaultDisplay(); 
+		width = display.getWidth();
 		LayoutInflater inflater = (LayoutInflater) this
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View layout = inflater.inflate(R.layout.pop_up_pass,
 				(ViewGroup) findViewById(R.id.popup_element));
-		PopupWindow pw = new PopupWindow(layout, 100, 100, true);
+		PopupWindow pw = new PopupWindow(layout,width , 200, true);
 		pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
 	}

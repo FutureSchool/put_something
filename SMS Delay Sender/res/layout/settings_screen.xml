@@ -26,15 +26,6 @@
         android:hint="@string/repeat_password"
         android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/reset_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/abort_password_repeat"
-        android:layout_below="@+id/abort_password_repeat"
-        android:text="@string/reset" />
-
     <EditText
         android:id="@+id/abort_password"
         android:layout_width="wrap_content"
@@ -85,5 +76,31 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="27dp"
         android:text="@string/time_info" />
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/abort_password_repeat"
+        android:text="@string/reset" />
+
+    <Button
+        android:id="@+id/set_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/reset_button"
+        android:layout_alignBottom="@+id/reset_button"
+        android:layout_alignRight="@+id/abort_password_repeat"
+        android:text="@string/set_pass" />
+
+    <Button
+        android:id="@+id/setting_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp"
+        android:text="@string/setting_done" />
 
 </RelativeLayout>

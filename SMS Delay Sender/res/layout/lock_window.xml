@@ -60,6 +60,16 @@
         android:layout_marginBottom="28dp"
         android:background="#ffffff" />
 
+    <Button
+        android:id="@+id/help_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red"
+        android:text="@string/help"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#E32636"
+        android:textSize="100dp" />
+
     <!-- android:layout_above="@+id/sms_progress_bar" -->
     <!-- android:layout_alignParentLeft="true" -->
 
@@ -71,15 +81,5 @@
 <!--         android:hint="@string/enter_password" -->
 <!--         android:inputType="textPassword" -->
 <!--         android:visibility="invisible" /> -->
-
-    <Button
-        android:id="@+id/help_button"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/red"
-        android:text="@string/help"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#E32636"
-        android:textSize="100dp" />
 
 </LinearLayout>

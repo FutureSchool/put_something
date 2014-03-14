@@ -26,12 +26,11 @@ public class Alarm_handler extends Activity {
 		stop.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-				
 				if (passField == null) {
 					Toast.makeText(null, "Please enter the password.",
 							Toast.LENGTH_LONG).show();
 				} else {
+					SharedPreferences prefs = getPreferences(MODE_PRIVATE);
 					password = passField.getText().toString();
 					// ... GET token using the shared preferences
 
