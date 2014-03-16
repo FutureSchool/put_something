@@ -28,8 +28,6 @@
             android:label="@string/title_activity_lock_wndow" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -37,8 +35,6 @@
             android:label="@string/title_activity_parameters_to_pass" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
          <activity
@@ -46,8 +42,6 @@
             android:label="@string/alarm_handler" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
