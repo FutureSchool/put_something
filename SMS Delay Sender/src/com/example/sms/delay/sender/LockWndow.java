@@ -2,6 +2,7 @@ package com.example.sms.delay.sender;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Display;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 
 public class LockWndow extends Activity {
@@ -54,20 +56,36 @@ public class LockWndow extends Activity {
 
 	@SuppressWarnings("deprecation")
 	public void inflateView() {
-		int width;
-		Display display = getWindowManager().getDefaultDisplay(); 
-		width = display.getWidth();
-		
-		Intent alarm = new Intent(this, Alarm_handler.class);
-		startActivityForResult(alarm, RESULT_OK);
-		
-		LayoutInflater inflater = (LayoutInflater) this
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View layout = inflater.inflate(R.layout.pop_up_pass,
-				(ViewGroup) findViewById(R.id.popup_element));
-		PopupWindow pw = new PopupWindow(layout,width , 200, true);
-		pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
+		// Initialize a new dialog
+		final Dialog dialog = new Dialog(this);
 
+		// Set the dialog to modal (not cancelable)
+		dialog.setCancelable(false);
+		
+		// Set the contents of the dialog
+        dialog.setContentView(R.layout.pop_up_pass);
+        dialog.setTitle("Unlock");
+        
+        // Get the stop button
+        Button StopAlarmButton=(Button)dialog.findViewById(R.id.stop_alarm_button);
+
+        // Set the onclick listener of the stop alarm button
+        StopAlarmButton.setOnClickListener(new OnClickListener() {
+        	
+        	/**
+        	 * The onClick will be called when user clicks on Stop alarm button
+        	 */
+        	public void onClick(View v) {
+                // initialize the password field
+                final EditText Password=(EditText)v.findViewById(R.id.password_given);
+
+                //TODO: Test for password here and stop the alarm and dismiss only if password correct.
+        		dialog.dismiss();
+        	}
+        });
+
+        // Show the dialog
+        dialog.show();
 	}
 
 	public String createSms(String address, String name) {
