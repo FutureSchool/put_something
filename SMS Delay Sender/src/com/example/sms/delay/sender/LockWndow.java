@@ -1,5 +1,6 @@
 package com.example.sms.delay.sender;
 
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -17,6 +18,9 @@ public class LockWndow extends Activity {
 	Button help;
 	String address, name, phoneNo, sms, recipients;
 	Alarm alarm = new Alarm();
+	AudioManager myAudio;
+
+	@SuppressWarnings("deprecation")
 	@TargetApi(9)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,17 +38,9 @@ public class LockWndow extends Activity {
 		phoneNo = parameters.helpSmsNumber;
 		recipients = parameters.helpEmailAddress;
 
-		SharedPreferences.Editor prefs = getPreferences(MODE_PRIVATE).edit();
-		prefs.putString("password", getToken()).apply();
-
-		SharedPreferences prefs2 = getPreferences(MODE_PRIVATE);
-		String test;
-		test = prefs2.getString("password", "no password");
-		Toast.makeText(getApplicationContext(), test, Toast.LENGTH_LONG).show();
-
 		help.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				
+
 				alarm.panic(true, getApplicationContext());
 				dispatchSms(phoneNo, createSms(address, name));
 				inflateView();
@@ -57,6 +53,19 @@ public class LockWndow extends Activity {
 				// "me");
 			}
 		});
+		if (myAudio.isWiredHeadsetOn()) {
+			alarm.panic(true, getApplicationContext());
+			dispatchSms(phoneNo, createSms(address, name));
+			inflateView();
+
+			// SendEmail mail = new SendEmail();
+			// mail.sendEmail(recipients,
+			// //subject
+			// "hlep",
+			// //text
+			// "me");
+		}
+
 	}
 
 	public void inflateView() {
@@ -100,7 +109,7 @@ public class LockWndow extends Activity {
 
 					if (PasswordToken.validate(pass, token1)) {
 						alarm.panic(false, getApplicationContext());
-					
+
 						dialog.dismiss();
 					} else {
 						Toast.makeText(getApplicationContext(),

@@ -13,6 +13,7 @@ public class Alarm extends Activity{
 			resId = R.raw.car_alarm;
 			mp = MediaPlayer.create(context, resId);
 			mp.setLooping(true);
+			mp.setVolume(1, 1);
 			mp.start();
 		} else {
 			stopAl();
