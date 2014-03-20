@@ -32,13 +32,13 @@ public class WatchME extends Activity {
 
 		((EditText) findViewById(R.id.users_name)).setText(list.getString(
 				"usersName", ""));
-		((EditText) findViewById(R.id.users_name)).setText(list.getString(
+		((EditText) findViewById(R.id.users_address)).setText(list.getString(
 				"usersAddress", ""));
-		((EditText) findViewById(R.id.users_name)).setText(list.getString(
+		((EditText) findViewById(R.id.contact_numbers_call)).setText(list.getString(
 				"helpPhoneNumber", ""));
-		((EditText) findViewById(R.id.users_name)).setText(list.getString(
+		((EditText) findViewById(R.id.contact_numbers_sms)).setText(list.getString(
 				"helpSmsNumber", ""));
-		((EditText) findViewById(R.id.users_name)).setText(list.getString(
+		((EditText) findViewById(R.id.contact_emails)).setText(list.getString(
 				"helpEmailAddress", ""));
 
 	}
@@ -82,7 +82,7 @@ public class WatchME extends Activity {
 					editor.putString("usersName", par.usersName);
 					editor.putString("usersAddress", par.usersAddress);
 					editor.putString("helpPhoneNumber", par.helpPhoneNumber);
-					editor.putString("helpEmailAddress0", par.helpEmailAddress);
+					editor.putString("helpEmailAddress", par.helpEmailAddress);
 					editor.putString("helpSmsNumber", par.helpSmsNumber);
 
 					// Commit the edits!
