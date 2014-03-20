@@ -37,13 +37,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-         <activity
-            android:name=".Alarm_handler"
-            android:label="@string/alarm_handler" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

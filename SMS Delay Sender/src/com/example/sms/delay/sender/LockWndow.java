@@ -1,26 +1,23 @@
 package com.example.sms.delay.sender;
 
 import android.os.Bundle;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.view.Display;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupWindow;
+import android.widget.Toast;
 
 public class LockWndow extends Activity {
 
 	Button help;
 	String address, name, phoneNo, sms, recipients;
-
+	Alarm alarm = new Alarm();
+	@TargetApi(9)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,9 +34,17 @@ public class LockWndow extends Activity {
 		phoneNo = parameters.helpSmsNumber;
 		recipients = parameters.helpEmailAddress;
 
+		SharedPreferences.Editor prefs = getPreferences(MODE_PRIVATE).edit();
+		prefs.putString("password", getToken()).apply();
+
+		SharedPreferences prefs2 = getPreferences(MODE_PRIVATE);
+		String test;
+		test = prefs2.getString("password", "no password");
+		Toast.makeText(getApplicationContext(), test, Toast.LENGTH_LONG).show();
+
 		help.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Alarm alarm = new Alarm();
+				
 				alarm.panic(true, getApplicationContext());
 				dispatchSms(phoneNo, createSms(address, name));
 				inflateView();
@@ -54,38 +59,66 @@ public class LockWndow extends Activity {
 		});
 	}
 
-	@SuppressWarnings("deprecation")
 	public void inflateView() {
 		// Initialize a new dialog
 		final Dialog dialog = new Dialog(this);
 
 		// Set the dialog to modal (not cancelable)
 		dialog.setCancelable(false);
-		
+
 		// Set the contents of the dialog
-        dialog.setContentView(R.layout.pop_up_pass);
-        dialog.setTitle("Unlock");
-        
-        // Get the stop button
-        Button StopAlarmButton=(Button)dialog.findViewById(R.id.stop_alarm_button);
+		dialog.setContentView(R.layout.pop_up_pass);
+		dialog.setTitle("Unlock");
 
-        // Set the onclick listener of the stop alarm button
-        StopAlarmButton.setOnClickListener(new OnClickListener() {
-        	
-        	/**
-        	 * The onClick will be called when user clicks on Stop alarm button
-        	 */
-        	public void onClick(View v) {
-                // initialize the password field
-                final EditText Password=(EditText)v.findViewById(R.id.password_given);
+		// Get the stop button
+		Button StopAlarmButton = (Button) dialog
+				.findViewById(R.id.stop_alarm_button);
 
-                //TODO: Test for password here and stop the alarm and dismiss only if password correct.
-        		dialog.dismiss();
-        	}
-        });
+		// Set the onclick listener of the stop alarm button
+		StopAlarmButton.setOnClickListener(new OnClickListener() {
 
-        // Show the dialog
-        dialog.show();
+			/**
+			 * The onClick will be called when user clicks on Stop alarm button
+			 */
+			public void onClick(View v) {
+				// initialize the password field
+				final EditText passField = (EditText) dialog
+						.findViewById(R.id.password_given);
+				String pass;
+				pass = passField.getText().toString();
+
+				// only if password correct.
+				if (pass.matches("")) {
+					Toast.makeText(getApplicationContext(),
+							"Please enter the password.", Toast.LENGTH_LONG)
+							.show();
+				} else {
+					SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+					// ... GET token using the shared preferences
+
+					String token1 = prefs.getString("password", null);
+
+					if (PasswordToken.validate(pass, token1)) {
+						alarm.panic(false, getApplicationContext());
+					
+						dialog.dismiss();
+					} else {
+						Toast.makeText(getApplicationContext(),
+								"Invalid password please try again.",
+								Toast.LENGTH_LONG).show();
+					}
+				}
+			}
+		});
+
+		// Show the dialog
+		dialog.show();
+	}
+
+	public String getToken() {
+		String testpass = "hello";
+		String token = PasswordToken.makeDigest(testpass);
+		return token;
 	}
 
 	public String createSms(String address, String name) {

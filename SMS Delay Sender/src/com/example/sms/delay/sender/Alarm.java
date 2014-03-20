@@ -20,6 +20,7 @@ public class Alarm extends Activity{
 	}
 
 	public void stopAl() {
+		mp.setLooping(false);
 		mp.stop();
 		mp.release();
 	}

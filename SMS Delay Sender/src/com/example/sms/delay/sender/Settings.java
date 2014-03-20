@@ -41,7 +41,7 @@ public class Settings extends Activity {
 
 			public void onClick(View v) {
 				String s = null;
-				prefs.putString("password", s);
+				prefs.putString("password", s).apply();
 			}
 		});
 		stopService(getIntent());
