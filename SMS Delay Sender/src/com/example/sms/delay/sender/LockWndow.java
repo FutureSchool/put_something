@@ -134,7 +134,7 @@ public class LockWndow extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.lock_wndow, menu);
+		getMenuInflater().inflate(R.menu.global_menu, menu);
 		return true;
 	}
 }

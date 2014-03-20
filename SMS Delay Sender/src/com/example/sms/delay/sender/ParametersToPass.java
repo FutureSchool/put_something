@@ -10,4 +10,7 @@ public class ParametersToPass implements Serializable{
 	public String helpEmailAddress;
 	public String helpPhoneNumber;
 
+	
 }
+
+
