@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,21 +37,43 @@ public class WatchME extends Activity {
 				"usersName", ""));
 		((EditText) findViewById(R.id.users_address)).setText(list.getString(
 				"usersAddress", ""));
-		((EditText) findViewById(R.id.contact_numbers_call)).setText(list.getString(
-				"helpPhoneNumber", ""));
-		((EditText) findViewById(R.id.contact_numbers_sms)).setText(list.getString(
-				"helpSmsNumber", ""));
+		((EditText) findViewById(R.id.contact_numbers_call)).setText(list
+				.getString("helpPhoneNumber", ""));
+		((EditText) findViewById(R.id.contact_numbers_sms)).setText(list
+				.getString("helpSmsNumber", ""));
 		((EditText) findViewById(R.id.contact_emails)).setText(list.getString(
 				"helpEmailAddress", ""));
 
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.global_menu, menu);
+	
+	 @Override
+	 public boolean onCreateOptionsMenu(Menu menu) {
+	 getMenuInflater().inflate(R.menu.global_menu, menu);
+	 return true;
+	 }
+
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		MenuInflater inflater = getMenuInflater();
+//		inflater.inflate(R.menu.global_menu, menu);
+//		return true;
+//	}
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// action with ID action_refresh was selected
+		case R.id.menu_settings:
+			Intent activity_3 = new Intent(this, Settings.class);
+			startActivityForResult(activity_3, 0);
+			break;
+		default:
+			break;
+		}
+
 		return true;
 	}
-	
+
 	public void startSecurity(View view) {
 
 		if (check_settings() == true) {
@@ -113,15 +137,15 @@ public class WatchME extends Activity {
 	}
 
 	public Boolean check_settings() {
-//		String password;
-//		SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-//		password = prefs.getString("password", null);
-//		if (password == null) {
-//			Intent setting = new Intent(this, Settings.class);
-//			startActivity(setting);
-//		} else {
-//			return true;
-//		}
+		// String password;
+		// SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+		// password = prefs.getString("password", null);
+		// if (password == null) {
+		// Intent setting = new Intent(this, Settings.class);
+		// startActivity(setting);
+		// } else {
+		// return true;
+		// }
 		return true;
 	}
 }
