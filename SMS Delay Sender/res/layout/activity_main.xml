@@ -65,6 +65,17 @@
         android:text="@string/start"
         android:textColor="#000000"
         android:textColorHighlight="#E32636" />
+    
+<!--     This wass added in a tutorial that I was following but I couldn't find a why they added it.. -->
+<!--     http://www.compiletimeerror.com/2013/08/androidoptions-menu-in-android-example.html#.UzPWd5jJVyA -->
+<!--     <TextView -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_centerHorizontal="true" -->
+<!--         android:layout_centerVertical="true" -->
+<!--         android:text="Compiletimeerror.com : Android Tutorials" -->
+<!--         tools:context=".MainActivity" /> -->
+    
 
     <TextView
         android:id="@+id/priority_order"
