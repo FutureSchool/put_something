@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,7 +30,7 @@ public class LockWndow extends Activity {
 
 		help = (Button) findViewById(R.id.help_button);
 		Bundle extras = getIntent().getExtras();
-
+	
 		ParametersToPass parameters = (ParametersToPass) extras
 				.getSerializable("parameters");
 
@@ -53,7 +54,9 @@ public class LockWndow extends Activity {
 				// "me");
 			}
 		});
-		if (myAudio.isWiredHeadsetOn()) {
+		myAudio = (AudioManager)getApplicationContext().getSystemService(AUDIO_SERVICE);
+		
+		if (!myAudio.isWiredHeadsetOn()) {
 			alarm.panic(true, getApplicationContext());
 			dispatchSms(phoneNo, createSms(address, name));
 			inflateView();
