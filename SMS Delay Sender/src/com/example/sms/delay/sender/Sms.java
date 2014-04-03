@@ -11,8 +11,7 @@ public class Sms {
 			smsManager.sendTextMessage(phoneNo, null, sms, null, null);
 			Toast.makeText(context, "SMS Sent!", Toast.LENGTH_LONG).show();
 		} catch (Exception e) {
-			Toast.makeText(context, "SMS faild, please try again later!",
-					Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "SMS faild, please try again later!",(int) 0.5);
 			e.printStackTrace();
 		}
 	}

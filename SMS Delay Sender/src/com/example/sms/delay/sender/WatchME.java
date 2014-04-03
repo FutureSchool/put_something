@@ -3,10 +3,12 @@ package com.example.sms.delay.sender;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,6 +17,8 @@ public class WatchME extends Activity {
 	Button buttonSend;
 	EditText textPhoneNo;
 	EditText textSMS;
+	CheckBox earphone;
+	AudioManager myAudio;
 
 	public static final String PREFS_NAME = "MyPrefsFile";
 
@@ -34,10 +38,10 @@ public class WatchME extends Activity {
 				"usersName", ""));
 		((EditText) findViewById(R.id.users_address)).setText(list.getString(
 				"usersAddress", ""));
-		((EditText) findViewById(R.id.contact_numbers_call)).setText(list.getString(
-				"helpPhoneNumber", ""));
-		((EditText) findViewById(R.id.contact_numbers_sms)).setText(list.getString(
-				"helpSmsNumber", ""));
+		((EditText) findViewById(R.id.contact_numbers_call)).setText(list
+				.getString("helpPhoneNumber", ""));
+		((EditText) findViewById(R.id.contact_numbers_sms)).setText(list
+				.getString("helpSmsNumber", ""));
 		((EditText) findViewById(R.id.contact_emails)).setText(list.getString(
 				"helpEmailAddress", ""));
 
@@ -59,6 +63,11 @@ public class WatchME extends Activity {
 					.getText().toString();
 			par.helpEmailAddress = ((EditText) findViewById(R.id.contact_emails))
 					.getText().toString();
+
+			earphone = (CheckBox) findViewById(R.id.checkBox1);
+			Boolean isChecked = earphone.isChecked();
+			if (isChecked == true)
+				par.checkBox = true;
 
 			if (par.usersName.length() != 0 && par.usersAddress.length() != 0) {
 
@@ -106,15 +115,13 @@ public class WatchME extends Activity {
 	}
 
 	public Boolean check_settings() {
-//		String password;
-//		SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-//		password = prefs.getString("password", null);
-//		if (password == null) {
-//			Intent setting = new Intent(this, Settings.class);
-//			startActivity(setting);
-//		} else {
-//			return true;
-//		}
+		// String password;
+		//
+		// SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+		// password = prefs.getString("password", null);
+		// if (password == "") {
+		// //TODO change to setting window
+		// }
 		return true;
 	}
 }

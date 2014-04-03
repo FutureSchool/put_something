@@ -57,6 +57,12 @@
         android:hint="@string/emails_list"
         android:inputType="textEmailAddress" />
 
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Earphone Trigger" />
+
     <Button
         android:id="@+id/button_start"
         android:layout_width="fill_parent"

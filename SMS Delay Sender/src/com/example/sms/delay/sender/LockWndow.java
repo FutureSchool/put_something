@@ -6,7 +6,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,10 +17,11 @@ public class LockWndow extends Activity {
 
 	Button help;
 	String address, name, phoneNo, sms, recipients;
+	Boolean checkBox;
 	Alarm alarm = new Alarm();
 	AudioManager myAudio;
+	int count = 0;
 
-	@SuppressWarnings("deprecation")
 	@TargetApi(9)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class LockWndow extends Activity {
 
 		help = (Button) findViewById(R.id.help_button);
 		Bundle extras = getIntent().getExtras();
-	
+
 		ParametersToPass parameters = (ParametersToPass) extras
 				.getSerializable("parameters");
 
@@ -38,6 +38,16 @@ public class LockWndow extends Activity {
 		address = parameters.usersAddress;
 		phoneNo = parameters.helpSmsNumber;
 		recipients = parameters.helpEmailAddress;
+		checkBox = parameters.checkBox;
+
+		// SharedPreferences.Editor prefs = getPreferences(MODE_PRIVATE).edit();
+		// prefs.putString("password", getToken()).apply();
+		//
+		// SharedPreferences prefs2 = getPreferences(MODE_PRIVATE);
+		// String test;
+		// test = prefs2.getString("password", "no password");
+		// Toast.makeText(getApplicationContext(), test,
+		// Toast.LENGTH_LONG).show();
 
 		help.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -54,21 +64,10 @@ public class LockWndow extends Activity {
 				// "me");
 			}
 		});
-		myAudio = (AudioManager)getApplicationContext().getSystemService(AUDIO_SERVICE);
-		
-		if (!myAudio.isWiredHeadsetOn()) {
-			alarm.panic(true, getApplicationContext());
-			dispatchSms(phoneNo, createSms(address, name));
-			inflateView();
 
-			// SendEmail mail = new SendEmail();
-			// mail.sendEmail(recipients,
-			// //subject
-			// "hlep",
-			// //text
-			// "me");
+		if (checkBox == true) {
+			earphone();
 		}
-
 	}
 
 	public void inflateView() {
@@ -102,7 +101,7 @@ public class LockWndow extends Activity {
 				// only if password correct.
 				if (pass.matches("")) {
 					Toast.makeText(getApplicationContext(),
-							"Please enter the password.", Toast.LENGTH_LONG)
+							"Please enter the password.", Toast.LENGTH_SHORT)
 							.show();
 				} else {
 					SharedPreferences prefs = getPreferences(MODE_PRIVATE);
@@ -115,9 +114,15 @@ public class LockWndow extends Activity {
 
 						dialog.dismiss();
 					} else {
-						Toast.makeText(getApplicationContext(),
-								"Invalid password please try again.",
-								Toast.LENGTH_LONG).show();
+						if (count == 3) {
+							dialog.dismiss();
+						} else {
+							passField.setText("");
+							Toast.makeText(getApplicationContext(),
+									"Invalid password please try again.",
+									Toast.LENGTH_SHORT).show();
+							count++;
+						}
 					}
 				}
 			}
@@ -125,6 +130,18 @@ public class LockWndow extends Activity {
 
 		// Show the dialog
 		dialog.show();
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void earphone(){
+		myAudio = (AudioManager) getApplicationContext()
+				.getSystemService(AUDIO_SERVICE);
+
+		if (!myAudio.isWiredHeadsetOn()) {
+			alarm.panic(true, getApplicationContext());
+			dispatchSms(phoneNo, createSms(address, name));
+			inflateView();
+		}
 	}
 
 	public String getToken() {
