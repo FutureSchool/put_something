@@ -11,3 +11,5 @@ public class ParametersToPass implements Serializable{
 	public String helpPhoneNumber;
 	public Boolean checkBox;
 }
+
+

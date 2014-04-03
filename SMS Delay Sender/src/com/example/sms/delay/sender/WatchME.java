@@ -6,6 +6,9 @@ import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -45,6 +48,36 @@ public class WatchME extends Activity {
 		((EditText) findViewById(R.id.contact_emails)).setText(list.getString(
 				"helpEmailAddress", ""));
 
+	}
+
+	
+	 @Override
+	 public boolean onCreateOptionsMenu(Menu menu) {
+	 getMenuInflater().inflate(R.menu.global_menu, menu);
+	 return true;
+	 }
+
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		MenuInflater inflater = getMenuInflater();
+//		inflater.inflate(R.menu.global_menu, menu);
+//		return true;
+//	}
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// action with ID action_refresh was selected
+		case R.id.menu_settings:
+	          Toast.makeText(this, "Option1", Toast.LENGTH_SHORT).show();
+	          return true;
+//			Intent activity_3 = new Intent(this, Settings.class);
+//			startActivityForResult(activity_3, 0);
+////			break;
+//		default:
+//			break;
+		}
+
+		return true;
 	}
 
 	public void startSecurity(View view) {
