@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 
 public class Alarm_handler extends Activity {
 
+	
 	Button stop;
 	EditText passField;
 	String password;
