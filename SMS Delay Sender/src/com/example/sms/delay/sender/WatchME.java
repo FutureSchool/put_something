@@ -1,5 +1,7 @@
 package com.example.sms.delay.sender;
 
+import java.util.concurrent.locks.Lock;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -46,34 +48,33 @@ public class WatchME extends Activity {
 
 	}
 
-	
-	 @Override
-	 public boolean onCreateOptionsMenu(Menu menu) {
-	 getMenuInflater().inflate(R.menu.global_menu, menu);
-	 return true;
-	 }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.global_menu, menu);
+		return true;
+	}
 
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		MenuInflater inflater = getMenuInflater();
-//		inflater.inflate(R.menu.global_menu, menu);
-//		return true;
-//	}
+	// @Override
+	// public boolean onCreateOptionsMenu(Menu menu) {
+	// MenuInflater inflater = getMenuInflater();
+	// inflater.inflate(R.menu.global_menu, menu);
+	// return true;
+	// }
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		// action with ID action_refresh was selected
 		case R.id.menu_settings:
-	          Toast.makeText(this, "Option1", Toast.LENGTH_SHORT).show();
-	          return true;
-//			Intent activity_3 = new Intent(this, Settings.class);
-//			startActivityForResult(activity_3, 0);
-////			break;
-//		default:
-//			break;
+			Toast.makeText(this, "Option1", Toast.LENGTH_SHORT).show();
+//			 return true;
+			 Intent activity_1 = new Intent(this, SmsSettings.class);
+//			 Intent activity_1 = new Intent(this, LockWndow.class);
+			 startActivity(activity_1);
+
+			 return true;
 		}
 
-		return true;
+		 return true;
 	}
 
 	public void startSecurity(View view) {
