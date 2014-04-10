@@ -35,8 +35,7 @@
     <string name="message">Message</string>
     <string name="email">Email</string>
     <string name="et">Earphone Trigger</string>
-    <string name="what_is_this_message">What is this message? This is an auto-generated message from the android security app WatchME. The likelihood of this being false alarm is completely dependant on the user's sensitivity settings. For the app to fulfil it's purpose the users should be made aware of it if they are sending out false alarms all the time. Please don't stop responding to such alerts just because one user is spamming you all the time.</string>
-    <string />
-    <string name="disclaimer">The developers of WatchME are in no way responsible for any false alarms what soever. The likelihood of this being false alarm is completely dependant on the user's sensitivity settings. For the app to fulfil it's purpose the users should be made aware of it if they are sending out false alarms all the time.</string>
+    <string name="what_is_this_message">What is this message? This is an auto-generated message from the android security app WatchME. The likelihood of this being false alarm is completely dependant on the user\'s sensitivity settings. For the app to fulfil it\'s purpose the users should be made aware of it if they are sending out false alarms all the time. Please don\'t stop responding to such alerts just because one user is spamming you all the time.</string>
+    <string name="disclaimer">The developers of WatchME are in no way responsible for any false alarms what soever. The likelihood of this being false alarm is completely dependant on the user\'s sensitivity settings. For the app to fulfil it\'s purpose the users should be made aware of it if they are sending out false alarms all the time.</string>
 
 </resources>
