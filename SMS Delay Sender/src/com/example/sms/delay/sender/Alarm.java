@@ -7,33 +7,37 @@ import android.media.MediaPlayer;
 
 public class Alarm extends Activity {
 
-	final AudioManager mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-	final int originalVolume = mAudioManager
-			.getStreamVolume(AudioManager.STREAM_MUSIC);
+	AudioManager mAudioManager;
+	int originalVolume;
+
 	public MediaPlayer mp;
 
 	public void panic(Boolean alarm, Context context) {
 		if (alarm == true) {
-
-			if (mp.isPlaying()) {
-				return;
-			}
 
 			int resId;
 
 			resId = R.raw.car_alarm;
 			mp = MediaPlayer.create(context, resId);
 			mp.setLooping(true);
-			mAudioManager
-					.setStreamVolume(AudioManager.STREAM_MUSIC, mAudioManager
-							.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
 
+			if (mp.isPlaying()) {
+				return;
+			}
+//			mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+//			originalVolume = mAudioManager
+//					.getStreamVolume(AudioManager.STREAM_MUSIC);
+//			mAudioManager
+//					.setStreamVolume(AudioManager.STREAM_MUSIC, mAudioManager
+//							.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
 			mp.start();
 		} else {
 			if (mp != null) {
 				if (mp.isPlaying())
 					mp.stop();
 				mp.release();
+//				mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
+//						originalVolume, 0);
 			}
 		}
 	}

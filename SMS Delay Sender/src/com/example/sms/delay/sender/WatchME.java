@@ -66,16 +66,16 @@ public class WatchME extends Activity {
 		switch (item.getItemId()) {
 		// action with ID action_refresh was selected
 		case R.id.menu_settings:
-			Toast.makeText(this, "Option1", Toast.LENGTH_SHORT).show();
-			return true;
-			// Intent activity_3 = new Intent(this, Settings.class);
-			// startActivityForResult(activity_3, 0);
-			// // break;
-			// default:
-			// break;
+//			Toast.makeText(this, "Option1", Toast.LENGTH_SHORT).show();
+//			 return true;
+			 Intent activity_1 = new Intent(this, SmsSettings.class);
+//			 Intent activity_1 = new Intent(this, LockWndow.class);
+			 startActivity(activity_1);
+
+			 return true;
 		}
 
-		return true;
+		 return true;
 	}
 
 	public void startSecurity(View view) {
