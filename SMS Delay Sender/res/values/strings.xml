@@ -3,9 +3,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="name_please">Your full name</string>
+    <string name="address_name_please">Please enter your name and address</string>
     <string name="send">SEND</string>
-    <string name="user_address">Your address please</string>
+    <string name="user_address">Your address</string>
     <string name="number_list_sms">Numbers to be messaged</string>
     <string name="number_list_call">Numbers to be called</string>
     <string name="start">START SECURITY</string>
@@ -30,5 +30,13 @@
     <string name="setting_done">Done</string>
     <string name="alarm_handler">alarm_handler</string>
     <string name="title_activity_settings">settings</string>
+    <string name="name_full">Your full name</string>
+    <string name="call">Call</string>
+    <string name="message">Message</string>
+    <string name="email">Email</string>
+    <string name="et">Earphone Trigger</string>
+    <string name="what_is_this_message">What is this message? This is an auto-generated message from the android security app WatchME. The likelihood of this being false alarm is completely dependant on the user's sensitivity settings. For the app to fulfil it's purpose the users should be made aware of it if they are sending out false alarms all the time. Please don't stop responding to such alerts just because one user is spamming you all the time.</string>
+    <string />
+    <string name="disclaimer">The developers of WatchME are in no way responsible for any false alarms what soever. The likelihood of this being false alarm is completely dependant on the user's sensitivity settings. For the app to fulfil it's purpose the users should be made aware of it if they are sending out false alarms all the time.</string>
 
 </resources>
