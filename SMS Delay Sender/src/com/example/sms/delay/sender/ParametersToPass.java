@@ -9,7 +9,7 @@ public class ParametersToPass implements Serializable{
 	public String helpSmsNumber;
 	public String helpEmailAddress;
 	public String helpPhoneNumber;
-	public Boolean checkBox;
+	public Boolean earphoneCheck;
 }
 
 

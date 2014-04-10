@@ -18,9 +18,9 @@ public class LockWndow extends Activity {
 	Button help;
 	String address, name, phoneNo, sms, recipients;
 	Boolean checkBox;
-	Alarm alarm = new Alarm();
 	AudioManager myAudio;
 	int count = 0;
+	Alarm alarm;
 
 	@TargetApi(9)
 	@Override
@@ -30,6 +30,7 @@ public class LockWndow extends Activity {
 
 		help = (Button) findViewById(R.id.help_button);
 		Bundle extras = getIntent().getExtras();
+		alarm = new Alarm();
 
 		ParametersToPass parameters = (ParametersToPass) extras
 				.getSerializable("parameters");
@@ -38,18 +39,18 @@ public class LockWndow extends Activity {
 		address = parameters.usersAddress;
 		phoneNo = parameters.helpSmsNumber;
 		recipients = parameters.helpEmailAddress;
-		checkBox = parameters.checkBox;
+		checkBox = parameters.earphoneCheck;
 
-		// SharedPreferences.Editor prefs = getPreferences(MODE_PRIVATE).edit();
-		// prefs.putString("password", getToken()).apply();
-		//
-		// SharedPreferences prefs2 = getPreferences(MODE_PRIVATE);
-		// String test;
-		// test = prefs2.getString("password", "no password");
-		// Toast.makeText(getApplicationContext(), test,
-		// Toast.LENGTH_LONG).show();
+//		SharedPreferences.Editor prefs = getPreferences(MODE_PRIVATE).edit();
+//		prefs.putString("password", getToken()).apply();
+//
+//		SharedPreferences prefs2 = getPreferences(MODE_PRIVATE);
+//		String test;
+//		test = prefs2.getString("password", "no password");
+//		Toast.makeText(getApplicationContext(), test, Toast.LENGTH_LONG).show();
 
 		help.setOnClickListener(new OnClickListener() {
+
 			public void onClick(View v) {
 
 				alarm.panic(true, getApplicationContext());
@@ -108,7 +109,8 @@ public class LockWndow extends Activity {
 					// ... GET token using the shared preferences
 
 					String token1 = prefs.getString("password", null);
-
+					Toast.makeText(getApplicationContext(), token1,
+							Toast.LENGTH_SHORT).show();
 					if (PasswordToken.validate(pass, token1)) {
 						alarm.panic(false, getApplicationContext());
 
@@ -131,11 +133,11 @@ public class LockWndow extends Activity {
 		// Show the dialog
 		dialog.show();
 	}
-	
+
 	@SuppressWarnings("deprecation")
-	public void earphone(){
-		myAudio = (AudioManager) getApplicationContext()
-				.getSystemService(AUDIO_SERVICE);
+	public void earphone() {
+		myAudio = (AudioManager) getApplicationContext().getSystemService(
+				AUDIO_SERVICE);
 
 		if (!myAudio.isWiredHeadsetOn()) {
 			alarm.panic(true, getApplicationContext());
@@ -143,12 +145,12 @@ public class LockWndow extends Activity {
 			inflateView();
 		}
 	}
-
-	public String getToken() {
-		String testpass = "hello";
-		String token = PasswordToken.makeDigest(testpass);
-		return token;
-	}
+//
+//	public String getToken() {
+//		String testpass = "hello";
+//		String token = PasswordToken.makeDigest(testpass);
+//		return token;
+//	}
 
 	public String createSms(String address, String name) {
 		String smsString;

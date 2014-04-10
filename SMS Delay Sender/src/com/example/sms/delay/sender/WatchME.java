@@ -7,7 +7,6 @@ import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -50,31 +49,30 @@ public class WatchME extends Activity {
 
 	}
 
-	
-	 @Override
-	 public boolean onCreateOptionsMenu(Menu menu) {
-	 getMenuInflater().inflate(R.menu.global_menu, menu);
-	 return true;
-	 }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.global_menu, menu);
+		return true;
+	}
 
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		MenuInflater inflater = getMenuInflater();
-//		inflater.inflate(R.menu.global_menu, menu);
-//		return true;
-//	}
+	// @Override
+	// public boolean onCreateOptionsMenu(Menu menu) {
+	// MenuInflater inflater = getMenuInflater();
+	// inflater.inflate(R.menu.global_menu, menu);
+	// return true;
+	// }
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		// action with ID action_refresh was selected
 		case R.id.menu_settings:
-	          Toast.makeText(this, "Option1", Toast.LENGTH_SHORT).show();
-	          return true;
-//			Intent activity_3 = new Intent(this, Settings.class);
-//			startActivityForResult(activity_3, 0);
-////			break;
-//		default:
-//			break;
+			Toast.makeText(this, "Option1", Toast.LENGTH_SHORT).show();
+			return true;
+			// Intent activity_3 = new Intent(this, Settings.class);
+			// startActivityForResult(activity_3, 0);
+			// // break;
+			// default:
+			// break;
 		}
 
 		return true;
@@ -99,9 +97,11 @@ public class WatchME extends Activity {
 
 			earphone = (CheckBox) findViewById(R.id.checkBox1);
 			Boolean isChecked = earphone.isChecked();
-			if (isChecked == true)
-				par.checkBox = true;
-
+			if (isChecked == true) {
+				par.earphoneCheck = true;
+			} else {
+				par.earphoneCheck = false;
+			}
 			if (par.usersName.length() != 0 && par.usersAddress.length() != 0) {
 
 				if (par.helpPhoneNumber.length() == 0
