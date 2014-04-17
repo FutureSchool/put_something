@@ -16,6 +16,7 @@
     <color name="red">#E32636</color>
 
     <string name="emails_list">Addresses to be emailed</string>
+     <string name="ok">OK</string>
     <string name="time_sms">Time till the sms and email contacts are notified (all at once)</string>
     <string name="time_call">Time till the emergency contacts are called in order of priority</string>
     <string name="repeat_password">Repeat Password</string>

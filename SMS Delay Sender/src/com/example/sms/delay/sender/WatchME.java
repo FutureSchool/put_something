@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,8 +30,9 @@ public class WatchME extends Activity {
 
 		// buttonSend = (Button) findViewById(R.id.help_button);
 		// textPhoneNo = (EditText) findViewById(R.id.contact_numbers_sms);
-		SharedPreferences list = PreferenceManager
-				.getDefaultSharedPreferences(this);
+		SharedPreferences list = getSharedPreferences(
+				getApplicationContext().getPackageName(),
+				MODE_PRIVATE);
 		// SharedPreferences list = getSharedPreferences(PREFS_NAME,
 		// MODE_PRIVATE);
 
@@ -116,8 +116,9 @@ public class WatchME extends Activity {
 					toast.show();
 
 				} else {
-					SharedPreferences list = PreferenceManager
-							.getDefaultSharedPreferences(this);
+					SharedPreferences list = getSharedPreferences(
+							getApplicationContext().getPackageName(),
+							MODE_PRIVATE);
 					// SharedPreferences list = getSharedPreferences(PREFS_NAME,
 					// MODE_PRIVATE);
 					SharedPreferences.Editor editor = list.edit();

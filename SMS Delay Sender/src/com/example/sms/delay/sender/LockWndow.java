@@ -1,5 +1,6 @@
 package com.example.sms.delay.sender;
 
+import android.os.Handler;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -51,7 +52,7 @@ public class LockWndow extends Activity {
 		phoneNo = parameters.helpSmsNumber;
 		recipients = parameters.helpEmailAddress;
 		checkBox = parameters.earphoneCheck;
-
+		//
 		// SharedPreferences.Editor prefs = getPreferences(MODE_PRIVATE).edit();
 		// prefs.putString("password", getToken()).apply();
 		//
@@ -123,7 +124,9 @@ public class LockWndow extends Activity {
 							"Please enter the password.", Toast.LENGTH_SHORT)
 							.show();
 				} else {
-					SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+					SharedPreferences prefs = getSharedPreferences(
+							getApplicationContext().getPackageName(),
+							MODE_PRIVATE);
 					// ... GET token using the shared preferences
 
 					String token1 = prefs.getString("password", null);
@@ -135,6 +138,14 @@ public class LockWndow extends Activity {
 					} else {
 						if (count == 3) {
 							dialog.dismiss();
+
+							Handler handler = new Handler();
+							handler.postDelayed(new Runnable() {
+								public void run() {
+									startAlarm();
+								}
+							}, 20000);
+
 						} else {
 							passField.setText("");
 							Toast.makeText(getApplicationContext(),
@@ -157,18 +168,12 @@ public class LockWndow extends Activity {
 				AUDIO_SERVICE);
 
 		if (!myAudio.isWiredHeadsetOn()) {
+			alarm = new Alarm();
 			alarm.panic(true, getApplicationContext());
 			dispatchSms(phoneNo, createSms(address, name));
 			inflateView();
 		}
 	}
-
-	//
-	// public String getToken() {
-	// String testpass = "hello";
-	// String token = PasswordToken.makeDigest(testpass);
-	// return token;
-	// }
 
 	public String createSms(String address, String name) {
 		String smsString;
@@ -182,10 +187,16 @@ public class LockWndow extends Activity {
 		String uadd = getString(R.id.users_address);
 		String ucont = getString(R.id.users_address)
 				+ " the phone number that you have been contacted by";
-		Location loc = mlocListener.phoneLocation;
-		String coord = Double.toString(loc.getLatitude()) + Double.toString(loc.getLongitude());
+		
+		try {
+			Location loc = mlocListener.phoneLocation;
+			String coord = Double.toString(loc.getLatitude()) + Double.toString(loc.getLongitude());
 
-		s.SendSMS(No, un, coord, uadd, ucont, getApplicationContext());
+			s.SendSMS(No, un, coord, uadd, ucont, getApplicationContext());
+			
+		} catch (Exception e) {
+			s.SendSMS(No, un, "location unknown", uadd, ucont, getApplicationContext());
+		}
 	}
 
 	@Override
