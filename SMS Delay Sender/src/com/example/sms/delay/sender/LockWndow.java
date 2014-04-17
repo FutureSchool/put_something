@@ -1,11 +1,15 @@
 package com.example.sms.delay.sender;
 
-import android.media.AudioManager;
-import android.os.Bundle;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.media.AudioManager;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,12 +25,20 @@ public class LockWndow extends Activity {
 	AudioManager myAudio;
 	int count = 0;
 	Alarm alarm = null;
+	MyLocationListener mlocListener;
 
 	@TargetApi(9)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.lock_window);
+
+		/* Use the LocationManager class to obtain GPS locations */
+
+		LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		mlocListener = new MyLocationListener();
+		mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,
+				mlocListener);
 
 		help = (Button) findViewById(R.id.help_button);
 		Bundle extras = getIntent().getExtras();
@@ -115,7 +127,7 @@ public class LockWndow extends Activity {
 					// ... GET token using the shared preferences
 
 					String token1 = prefs.getString("password", null);
-					
+
 					if (PasswordToken.validate(pass, token1)) {
 						alarm.panic(false, getApplicationContext());
 
@@ -166,7 +178,14 @@ public class LockWndow extends Activity {
 
 	public void dispatchSms(String No, String message) {
 		Sms s = new Sms();
-		s.SendSMS(No, message, getApplicationContext());
+		String un = getString(R.id.users_name);
+		String uadd = getString(R.id.users_address);
+		String ucont = getString(R.id.users_address)
+				+ " the phone number that you have been contacted by";
+		Location loc = mlocListener.phoneLocation;
+		String coord = Double.toString(loc.getLatitude()) + Double.toString(loc.getLongitude());
+
+		s.SendSMS(No, un, coord, uadd, ucont, getApplicationContext());
 	}
 
 	@Override
