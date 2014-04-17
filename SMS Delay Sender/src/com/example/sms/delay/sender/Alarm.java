@@ -14,9 +14,8 @@ public class Alarm extends Activity {
 
 	public void panic(Boolean alarm, Context context) {
 		if (alarm == true) {
-
+		
 			int resId;
-
 			resId = R.raw.car_alarm;
 			mp = MediaPlayer.create(context, resId);
 			mp.setLooping(true);
@@ -24,6 +23,7 @@ public class Alarm extends Activity {
 			if (mp.isPlaying()) {
 				return;
 			}
+
 //			mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 //			originalVolume = mAudioManager
 //					.getStreamVolume(AudioManager.STREAM_MUSIC);
