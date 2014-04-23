@@ -20,8 +20,8 @@ public class Sms {
 		try {
 			SmsManager smsManager = SmsManager.getDefault();
 			String message;
-			message = un + "could be in danger" + un + "'s coordinates are"
-					+ coord + ". Pleae try to contact/help" + un + "\n" + un + "'s address is" + uadd;
+			message = un + " could be in danger " + un + "'s coordinates are "
+					+ coord + "." + "\n \n" + "Please try to contact/help " + un + "\n \n" + un + "'s address is " + uadd;
 			smsManager.sendTextMessage(phoneNo, null, message, null, null);
 			
 			Toast.makeText(context, "SMS Sent!", Toast.LENGTH_LONG).show();
