@@ -183,19 +183,20 @@ public class LockWndow extends Activity {
 
 	public void dispatchSms(String No, String message) {
 		Sms s = new Sms();
-		String un = getString(R.id.users_name);
-		String uadd = getString(R.id.users_address);
-		String ucont = getString(R.id.users_address)
-				+ " the phone number that you have been contacted by";
+//		String un = getString(R.id.users_name);
+//		String uadd = getString(R.id.users_address);
+//		String ucont = getString(R.id.users_address)
+//				+ " the phone number that you have been contacted by";
+		
 		
 		try {
 			Location loc = mlocListener.phoneLocation;
 			String coord = Double.toString(loc.getLatitude()) + Double.toString(loc.getLongitude());
 
-			s.SendSMS(No, un, coord, uadd, ucont, getApplicationContext());
+			s.SendSMS(No, name, coord, address, ".", getApplicationContext());
 			
 		} catch (Exception e) {
-			s.SendSMS(No, un, "location unknown", uadd, ucont, getApplicationContext());
+			s.SendSMS(No, name, "location unknown", address, ".", getApplicationContext());
 		}
 	}
 
