@@ -30,8 +30,15 @@ public class SmsSettings extends Activity {
 		set_pass = (Button) findViewById(R.id.set_password);
 		reset = (Button) findViewById(R.id.reset_button);
 		done = (Button) findViewById(R.id.setting_done);
-		
-		inflateView();
+
+		SharedPreferences prefs2 = getSharedPreferences(getApplicationContext()
+				.getPackageName(), MODE_PRIVATE);
+		String existingPass = prefs2.getString("password", null);
+		if (existingPass != null) {
+			inflateView();
+		} else {
+			security = true;
+		}
 
 		set_pass.setOnClickListener(new OnClickListener() {
 
@@ -46,7 +53,6 @@ public class SmsSettings extends Activity {
 				if (p1.equals(p2)) {
 					String password;
 					password = p1;
-					
 					if (security) {
 						prefs.putString("password", getToken(password))
 								.commit();
@@ -55,6 +61,11 @@ public class SmsSettings extends Activity {
 						pass1.setText("");
 						pass2.setText("");
 					}
+				} else {
+					Toast.makeText(getApplicationContext(),
+							"Passwords don't match", Toast.LENGTH_SHORT).show();
+					pass1.setText("");
+					pass2.setText("");
 				}
 			}
 		});
@@ -68,6 +79,9 @@ public class SmsSettings extends Activity {
 							MODE_PRIVATE).edit();
 					String s = "";
 					prefs.putString("password", s).apply();
+					Toast.makeText(getApplicationContext(),
+							"Password reseted... \nPlease input new password.",
+							Toast.LENGTH_LONG).show();
 				}
 			}
 		});
@@ -92,7 +106,7 @@ public class SmsSettings extends Activity {
 		dialog.setContentView(R.layout.security);
 		dialog.setTitle("Unlock");
 
-		// Get the stop button
+		// Get the ok button
 		Button ok = (Button) dialog.findViewById(R.id.varify_button);
 		ok.setOnClickListener(new OnClickListener() {
 
@@ -119,10 +133,10 @@ public class SmsSettings extends Activity {
 						security = true;
 						dialog.dismiss();
 					} else {
-						passField.setText("");
 						Toast.makeText(getApplicationContext(),
 								"Invalid password please try again.",
 								Toast.LENGTH_SHORT).show();
+						passField.setText("");
 					}
 				}
 			}
