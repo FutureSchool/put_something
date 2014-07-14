@@ -1,13 +1,11 @@
 package com.example.sms.delay.sender;
 
-import android.media.AudioManager;
-import android.os.Bundle;
 import android.os.Handler;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.test.suitebuilder.TestSuiteBuilder.FailedToCreateTests;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,12 +21,20 @@ public class LockWndow extends Activity {
 	AudioManager myAudio;
 	int count = 0;
 	Alarm alarm = null;
+	MyLocationListener mlocListener;
 
 	@TargetApi(9)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.lock_window);
+
+		/* Use the LocationManager class to obtain GPS locations */
+
+		LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		mlocListener = new MyLocationListener();
+		mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,
+				mlocListener);
 
 		help = (Button) findViewById(R.id.help_button);
 		Bundle extras = getIntent().getExtras();
@@ -162,7 +168,21 @@ public class LockWndow extends Activity {
 
 	public void dispatchSms(String No, String message) {
 		Sms s = new Sms();
-		s.SendSMS(No, message, getApplicationContext());
+//		String un = getString(R.id.users_name);
+//		String uadd = getString(R.id.users_address);
+//		String ucont = getString(R.id.users_address)
+//				+ " the phone number that you have been contacted by";
+		
+		
+		try {
+			Location loc = mlocListener.phoneLocation;
+			String coord = Double.toString(loc.getLatitude()) + Double.toString(loc.getLongitude());
+
+			s.SendSMS(No, name, coord, address, ".", getApplicationContext());
+			
+		} catch (Exception e) {
+			s.SendSMS(No, name, "location unknown", address, ".", getApplicationContext());
+		}
 	}
 
 	@Override

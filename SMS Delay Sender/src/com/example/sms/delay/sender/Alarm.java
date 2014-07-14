@@ -23,6 +23,7 @@ public class Alarm extends Activity {
 			if (mp.isPlaying()) {
 				return;
 			}
+			
 
 //			mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 //			originalVolume = mAudioManager
