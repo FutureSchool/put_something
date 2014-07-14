@@ -149,13 +149,16 @@ public class WatchME extends Activity {
 	}
 
 	public Boolean check_settings() {
-		// String password;
-		//
-		// SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-		// password = prefs.getString("password", null);
-		// if (password == "") {
-		// //TODO change to setting window
-		// }
+		 String password;
+		
+		 SharedPreferences prefs = getSharedPreferences(
+					getApplicationContext().getPackageName(),
+					MODE_PRIVATE);
+		 password = prefs.getString("password", null);
+		 if (password == "") {
+			 Intent activity_1 = new Intent(this, SmsSettings.class);
+			 startActivity(activity_1);
+		 }
 		return true;
 	}
 }

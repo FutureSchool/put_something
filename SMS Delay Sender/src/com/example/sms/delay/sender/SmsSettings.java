@@ -30,7 +30,7 @@ public class SmsSettings extends Activity {
 		set_pass = (Button) findViewById(R.id.set_password);
 		reset = (Button) findViewById(R.id.reset_button);
 		done = (Button) findViewById(R.id.setting_done);
-
+		
 		inflateView();
 
 		set_pass.setOnClickListener(new OnClickListener() {
@@ -46,6 +46,7 @@ public class SmsSettings extends Activity {
 				if (p1.equals(p2)) {
 					String password;
 					password = p1;
+					
 					if (security) {
 						prefs.putString("password", getToken(password))
 								.commit();
@@ -117,6 +118,11 @@ public class SmsSettings extends Activity {
 					if (PasswordToken.validate(pass, token1)) {
 						security = true;
 						dialog.dismiss();
+					} else {
+						passField.setText("");
+						Toast.makeText(getApplicationContext(),
+								"Invalid password please try again.",
+								Toast.LENGTH_SHORT).show();
 					}
 				}
 			}

@@ -7,6 +7,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.SharedPreferences;
+import android.test.suitebuilder.TestSuiteBuilder.FailedToCreateTests;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -40,15 +41,6 @@ public class LockWndow extends Activity {
 		phoneNo = parameters.helpSmsNumber;
 		recipients = parameters.helpEmailAddress;
 		checkBox = parameters.earphoneCheck;
-		//
-		// SharedPreferences.Editor prefs = getPreferences(MODE_PRIVATE).edit();
-		// prefs.putString("password", getToken()).apply();
-		//
-		// SharedPreferences prefs2 = getPreferences(MODE_PRIVATE);
-		// String test;
-		// test = prefs2.getString("password", "no password");
-		// Toast.makeText(getApplicationContext(), test,
-		// Toast.LENGTH_LONG).show();
 
 		help.setOnClickListener(new OnClickListener() {
 
@@ -126,7 +118,6 @@ public class LockWndow extends Activity {
 					} else {
 						if (count == 3) {
 							dialog.dismiss();
-
 							Handler handler = new Handler();
 							handler.postDelayed(new Runnable() {
 								public void run() {
